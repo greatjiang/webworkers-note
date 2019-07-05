@@ -125,3 +125,6 @@
     主线程postMessage和worker线程是一一对应的顺序
   应用场景
 
+## 参考资料
+1. [Web Worker 使用教程](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)
+2. [Web Workers 分类及 5 个使用场景](https://github.com/Troland/how-javascript-works/blob/master/worker.md)
