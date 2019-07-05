@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" id="src">
+  <div id="dest"></div>
+  <script>
+    const worker = new Worker('crypto-worker.js')
+    const _src = document.getElementById('src')
+    const _dest = document.getElementById('dest')
+    _dest.onclick = function (){
+      worker.postMessage(_src.value)
+    }
+    worker.onmessage = function (e){
+      console.log('加密后的val'+e.data)
+    }
+  </script>
+</body>
+</html>

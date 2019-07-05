@@ -1,0 +1,1 @@
+importScripts('script1.js')

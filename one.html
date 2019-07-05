@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script id="worker" type="app/worker">
+    self.addEventListener('message',function (e){
+      self.postMessage('我们在同一个页面:'+e)
+    },false)
+    <!-- false 事件句柄在冒泡阶段执行 -->
+  </script>
+  <script>
+    const blob = new Blob([document.querySelector('#worker').textContent])
+    const url = window.URL.createObjectURL(blob)
+    console.log(url)
+    const worker = new Worker(url)
+    worker.onmessage = function (e){
+      console.log('接受worker返回'+e)
+    }
+    worker.postMessage('worker你好')
+
+  </script>
+</body>
+</html>
